@@ -1,33 +1,90 @@
 
-#include "Template.hpp"
+#include "Bureaucrat.hpp"
 
 // Default constructor
-Template::Template()
+Bureaucrat::Bureaucrat()
+	:_name("Default"), _grade(1)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
+// Parameterized constructor
+Bureaucrat::Bureaucrat(int grade)
+	:_name("Default"), _grade(grade)
+{
+	std::cout << "Parameterized constructor called" << std::endl;
+	this->setGrade(grade);
+}
+
+Bureaucrat::Bureaucrat(const std::string &name, int grade)
+	:_name(name)
+{
+	std::cout << "Parameterized constructor called" << std::endl;
+	this->setGrade(grade);
+}
 // Copy constructor
-Template::Template(const Template &other)
-	:_atribute(other._atribute)
+Bureaucrat::Bureaucrat(const Bureaucrat &other)
+	:_name(other._name), _grade(other._grade)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	// this->member = other.member;
 }
 
 // Copy Assignment operator overload
-Template &Template::operator=(const Template &other)
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	// if (this != &other)
-	// 	this->member = other.member();
+	if (this != &other)
+		this->_grade = other._grade;
 	return (*this);
 }
 
 // Destructor
-Template::~Template(void)
+Bureaucrat::~Bureaucrat(void)
 {
 	std::cout << "Destructor called" << std::endl;
 }
 
+std::string Bureaucrat::getName() const
+{
+	return (_name);
+}
+
+int Bureaucrat::getGrade() const
+{
+	return (_grade);
+}
+
+void	Bureaucrat::setGrade(int grade)
+{
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	this->_grade = grade;
+}
+
+void Bureaucrat::incrementGrade()
+{
+	this->setGrade(this->_grade - 1);
+}
+
+void Bureaucrat::decrementGrade()
+{
+	this->setGrade(this->_grade + 1);
+}
+
+const char *Bureaucrat::GradeTooHighException::what(void) const throw()
+{
+	return ("Grade too high");
+}
+
+const char *Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+	return ("Grade too low");
+}
+
+std::string Bureaucrat::getClassName() const
+{
+	return ("Bureaucrat");
+}
 
