@@ -17,7 +17,7 @@ Bureaucrat::Bureaucrat(int grade)
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade)
-	:_name(name)
+	:_name(name), _grade()
 {
 	std::cout << "Parameterized constructor called" << std::endl;
 	this->setGrade(grade);
@@ -88,3 +88,10 @@ std::string Bureaucrat::getClassName() const
 	return ("Bureaucrat");
 }
 
+std::ostream &operator<<(std::ostream &os, Bureaucrat &a)
+{
+	os << "\033[36m"
+	<< a.getClassName() << " name: " << a.getName() << " grade: " << a.getGrade()
+	<< "\033[0m";  // Reset color
+	return os;
+}

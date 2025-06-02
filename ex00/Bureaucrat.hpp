@@ -1,5 +1,4 @@
-#ifndef TEMPLATE_HPP
-# define TEMPLATE_HPP
+#pragma once
 
 # include <iostream>
 
@@ -10,7 +9,7 @@ class Bureaucrat
 		int			_grade;
 	public:
 		Bureaucrat();
-		Bureaucrat(int grade);
+		explicit Bureaucrat(int grade);
 		Bureaucrat(const std::string &name, int grade);
 		Bureaucrat(const Bureaucrat &other);
 		Bureaucrat &operator=(const Bureaucrat &other);
@@ -32,4 +31,4 @@ class Bureaucrat
 		};
 		virtual std::string getClassName() const;
 };
-#endif
+std::ostream &operator<<(std::ostream &os, Bureaucrat &a);
