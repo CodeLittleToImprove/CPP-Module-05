@@ -14,9 +14,12 @@
 
 void runFirstTest()
 {
-	std::cout << "\033[34mFirst Test\033[0m" << std::endl;
+	std::cout << "\n\033[34m========== First Test ==========\033[0m\n";
+	std::cout << "\033[1;34mTest: Increment grade at highest level\033[0m\n";
+	std::cout << "\033[1;34mExpected: Should throw GradeTooHighException\033[0m\n";
+
 	Bureaucrat a;
-	std::cout << "value before call incrementGrade: " << std::endl << a << std::endl;
+	std::cout << "\n\033[36m[Before incrementGrade()]\033[0m\n" << a << std::endl;
 
 	try
 	{
@@ -24,17 +27,21 @@ void runFirstTest()
 	}
 	catch (const Bureaucrat::GradeTooHighException& e)
 	{
-		std::cout << "\033[33mIncrementing grade of " << a.getName() <<
-			" failed: " << e.what() << "\033[0m" << std::endl;
+		std::cout << "\033[33m[Exception] Incrementing grade of " << a.getName()
+			<< " failed: " << e.what() << "\033[0m\n";
 	}
-	std::cout << "value after call incrementGrade: " << std::endl << a << std::endl;
+
+	std::cout << "\n\033[36m[After incrementGrade()]\033[0m\n" << a << std::endl;
 }
 
 void runSecondTest()
 {
-	std::cout << "\033[34mSecond Test\033[0m" << std::endl;
+	std::cout << "\n\033[34m========== Second Test ==========\033[0m\n";
+	std::cout << "\033[1;34mTest: Decrement grade from 1 to 2\033[0m\n";
+	std::cout << "\033[1;34mExpected: Grade should decrease normally\033[0m\n";
+
 	Bureaucrat b;
-	std::cout << "value before call decrementGrade: " << std::endl << b << std::endl;
+	std::cout << "\n\033[36m[Before decrementGrade()]\033[0m\n" << b << std::endl;
 
 	try
 	{
@@ -42,17 +49,21 @@ void runSecondTest()
 	}
 	catch (const Bureaucrat::GradeTooLowException& e)
 	{
-		std::cout << "\033[33mDecrementing grade of " << b.getName() <<
-			" failed: " << e.what() << "\033[0m" << std::endl;
+		std::cout << "\033[33m[Exception] Decrementing grade of " << b.getName()
+			<< " failed: " << e.what() << "\033[0m\n";
 	}
-	std::cout << "value after call decrementGrade: " << std::endl << b << std::endl;
+
+	std::cout << "\n\033[36m[After decrementGrade()]\033[0m\n" << b << std::endl;
 }
 
 void runThirdTest()
 {
-	std::cout << "\033[34mThird Test\033[0m" << std::endl;
+	std::cout << "\n\033[34m========== Third Test ==========\033[0m\n";
+	std::cout << "\033[1;34mTest: Decrement grade at lowest level (150)\033[0m\n";
+	std::cout << "\033[1;34mExpected: Should throw GradeTooLowException\033[0m\n";
+
 	Bureaucrat c(150);
-	std::cout << "value before call decrementGrade: " << std::endl << c << std::endl;
+	std::cout << "\n\033[36m[Before decrementGrade()]\033[0m\n" << c << std::endl;
 
 	try
 	{
@@ -60,45 +71,44 @@ void runThirdTest()
 	}
 	catch (const Bureaucrat::GradeTooLowException& e)
 	{
-		std::cout << "\033[33mDecrementing grade of " << c.getName() <<
-			" failed: " << e.what() << "\033[0m" << std::endl;
+		std::cout << "\033[33m[Exception] Decrementing grade of " << c.getName()
+			<< " failed: " << e.what() << "\033[0m\n";
 	}
-	std::cout << "value after call decrementGrade: " << std::endl << c << std::endl;
+
+	std::cout << "\n\033[36m[After decrementGrade()]\033[0m\n" << c << std::endl;
 }
 
 void runFourthTest()
 {
-	std::cout << "\033[34mFourth Test\033[0m" << std::endl;
+	std::cout << "\n\033[34m========== Fourth Test ==========\033[0m\n";
+	std::cout << "\033[1;34mTest: Create Bureaucrat with grade 160\033[0m\n";
+	std::cout << "\033[1;34mExpected: Should throw GradeTooLowException\033[0m\n";
 
 	try
 	{
-		Bureaucrat d("David", 160); // does not throw an exception and just stops?
-		std::cout << "value before call decrementGrade: " << std::endl << d << std::endl;
-		d.decrementGrade();
-		std::cout << "value after call decrementGrade: " << std::endl << d << std::endl;
+		Bureaucrat d("David", 160);
 	}
 	catch (const Bureaucrat::GradeTooLowException& e)
 	{
-		std::cout << "\033[33mCreating Bureaucrat 'David' failed: "
-			<< e.what() << "\033[0m" << std::endl;
+		std::cout << "\033[33m[Exception] Creating Bureaucrat 'David' failed: "
+			<< e.what() << "\033[0m\n";
 	}
 }
 
 void runFifthTest()
 {
-	std::cout << "\033[34mFifth Test\033[0m" << std::endl;
+	std::cout << "\n\033[34m========== Fifth Test ==========\033[0m\n";
+	std::cout << "\033[1;34mTest: Create Bureaucrat with grade 0\033[0m\n";
+	std::cout << "\033[1;34mExpected: Should throw GradeTooHighException\033[0m\n";
 
 	try
 	{
-		Bureaucrat e("Eve", 0); // Too high
-		std::cout << "value before call incrementGrade: " << std::endl << e << std::endl;
-		e.incrementGrade();
-		std::cout << "value after call incrementGrade: " << std::endl << e << std::endl;
+		Bureaucrat e("Eve", 0);
 	}
 	catch (const Bureaucrat::GradeTooHighException& e)
 	{
-		std::cout << "\033[33mCreating Bureaucrat 'Eve' failed: "
-			<< e.what() << "\033[0m" << std::endl;
+		std::cout << "\033[33m[Exception] Creating Bureaucrat 'Eve' failed: "
+			<< e.what() << "\033[0m\n";
 	}
 }
 
@@ -113,7 +123,7 @@ int main(void)
 	{
 		std::cerr << "Unexpected error during First Test" << std::endl;
 	}
-
+	std::cout  << std::endl;
 	try
 	{
 		runSecondTest();
@@ -122,7 +132,7 @@ int main(void)
 	{
 		std::cerr << "Unexpected error during Second Test" << std::endl;
 	}
-
+	std::cout  << std::endl;
 	try
 	{
 		runThirdTest();
@@ -131,7 +141,7 @@ int main(void)
 	{
 		std::cerr << "Unexpected error during Third Test" << std::endl;
 	}
-
+	std::cout  << std::endl;
 	try
 	{
 		runFourthTest();
@@ -140,7 +150,7 @@ int main(void)
 	{
 		std::cerr << "Unexpected error during Third Test" << std::endl;
 	}
-
+	std::cout  << std::endl;
 	try
 	{
 		runFifthTest();
