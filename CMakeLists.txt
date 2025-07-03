@@ -10,6 +10,12 @@ add_executable(cpp05_ex00
         ex00/Bureaucrat.hpp
 )
 
+add_executable(cpp05_ex01
+        ex01/main.cpp
+        ex01/Bureaucrat.cpp
+        ex01/Bureaucrat.hpp
+        ex01/Form.hpp
+)
 #add_executable(cpp04_ex01
 #        ex01/Animal.cpp
 #        ex01/Brain.cpp
