@@ -83,15 +83,10 @@ const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 	return ("Grade too low");
 }
 
-std::string Bureaucrat::getClassName() const
-{
-	return ("Bureaucrat");
-}
-
-std::ostream &operator<<(std::ostream &os, Bureaucrat &a)
+std::ostream& operator<<(std::ostream &os, Bureaucrat &a)
 {
 	os << "\033[36m"
-	<< a.getClassName() << " name: " << a.getName() << " grade: " << a.getGrade()
+	<< "Bureaucrat" << " name: " << a.getName() << " grade: " << a.getGrade()
 	<< "\033[0m";  // Reset color
 	return os;
 }

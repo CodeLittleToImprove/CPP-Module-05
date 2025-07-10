@@ -29,6 +29,5 @@ class Bureaucrat
 		public:
 			const char *what() const throw();
 		};
-		virtual std::string getClassName() const;
 };
-std::ostream &operator<<(std::ostream &os, Bureaucrat &a);
+std::ostream& operator<<(std::ostream &os, Bureaucrat &a);

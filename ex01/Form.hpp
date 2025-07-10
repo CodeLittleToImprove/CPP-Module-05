@@ -33,6 +33,6 @@ class Form
 		public:
 			const char *what() const throw();
 		};
-		// virtual std::string getClassName() const;
+		virtual std::string getClassName() const;
 };
 std::ostream &operator<<(std::ostream &os, Form &a);
