@@ -63,7 +63,7 @@ bool Form::getIsSigned() const
 
 void Form::beSigned(Bureaucrat& signer)
 {
-	if (signer.getGrade() >= this->_signGrade)
+	if (signer.getGrade() > this->_signGrade)
 		throw Form::GradeTooLowException();
 	this->_isSigned = true;
 }
@@ -74,7 +74,7 @@ std::ostream& operator<<(std::ostream& os, const Form& a)
 	<< "Form name:" << a.getName() << std::endl
 	<< "SignGrade:" << a.getSignGrade() <<std::endl
 	<< "ExecuteGrade:" << a.getExecuteGrade() << std::endl
-	<< "IsSigned:" << a.getIsSigned() << std::endl
+	<< "IsSigned: " << std::boolalpha << a.getIsSigned() << std::endl
 	<< "\033[0m";  // Reset color
 	return (os);
 }

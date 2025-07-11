@@ -15,149 +15,186 @@
 void runFirstTest()
 {
 	std::cout << "\n\033[34m========== First Test ==========\033[0m\n";
-	std::cout << "\033[1;34mTest: Increment grade at highest level\033[0m\n";
-	std::cout << "\033[1;34mExpected: Should throw GradeTooHighException\033[0m\n";
-
-	Bureaucrat a;
-	std::cout << "\n\033[36m[Before incrementGrade()]\033[0m\n" << a << std::endl;
+	std::cout << "\033[1;34mTest: Create a form in a valid range and print it \033[0m\n";
+	std::cout << "\033[1;34mExpected: Form should be created\033[0m\n";
 
 	try
 	{
-		a.incrementGrade();
+		Form validForm("valid form", 1, 150);
+		std::cout << validForm;
 	}
-	catch (const Bureaucrat::GradeTooHighException& e)
+	catch (const Form::GradeTooHighException& e)
 	{
-		std::cout << "\033[33m[Exception] Incrementing grade of " << a.getName()
-			<< " failed: " << e.what() << "\033[0m\n";
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
 	}
-
-	std::cout << "\n\033[36m[After incrementGrade()]\033[0m\n" << a << std::endl;
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
 }
 
 void runSecondTest()
 {
 	std::cout << "\n\033[34m========== Second Test ==========\033[0m\n";
-	std::cout << "\033[1;34mTest: Decrement grade from 1 to 2\033[0m\n";
-	std::cout << "\033[1;34mExpected: Grade should decrease normally\033[0m\n";
-
-	Bureaucrat b;
-	std::cout << "\n\033[36m[Before decrementGrade()]\033[0m\n" << b << std::endl;
+	std::cout << "\033[1;34mTest: Create a form in a invalid min range for signGrade (0)\033[0m\n";
+	std::cout << "\033[1;34mExpected: Form should be not be created and Grade too high exception should be thrown\033[0m\n";
 
 	try
 	{
-		b.decrementGrade();
+		Form inValidForm("invalid form max", 0, 150);
+		std::cout << inValidForm;
 	}
-	catch (const Bureaucrat::GradeTooLowException& e)
+	catch (const Form::GradeTooHighException& e)
 	{
-		std::cout << "\033[33m[Exception] Decrementing grade of " << b.getName()
-			<< " failed: " << e.what() << "\033[0m\n";
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
 	}
-
-	std::cout << "\n\033[36m[After decrementGrade()]\033[0m\n" << b << std::endl;
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
 }
 
 void runThirdTest()
 {
 	std::cout << "\n\033[34m========== Third Test ==========\033[0m\n";
-	std::cout << "\033[1;34mTest: Decrement grade at lowest level (150)\033[0m\n";
-	std::cout << "\033[1;34mExpected: Should throw GradeTooLowException\033[0m\n";
-
-	Bureaucrat c(150);
-	std::cout << "\n\033[36m[Before decrementGrade()]\033[0m\n" << c << std::endl;
+	std::cout << "\033[1;34mTest: Create a form in a invalid max range for signGrade (151)\033[0m\n";
+	std::cout << "\033[1;34mExpected: Form should be not be created and Grade too low exception should be thrown\033[0m\n";
 
 	try
 	{
-		c.decrementGrade();
+		Form inValidForm("invalid form min", 151, 150);
+		std::cout << inValidForm;
 	}
-	catch (const Bureaucrat::GradeTooLowException& e)
+	catch (const Form::GradeTooHighException& e)
 	{
-		std::cout << "\033[33m[Exception] Decrementing grade of " << c.getName()
-			<< " failed: " << e.what() << "\033[0m\n";
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
 	}
-
-	std::cout << "\n\033[36m[After decrementGrade()]\033[0m\n" << c << std::endl;
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
 }
 
 void runFourthTest()
 {
 	std::cout << "\n\033[34m========== Fourth Test ==========\033[0m\n";
-	std::cout << "\033[1;34mTest: Create Bureaucrat with grade 160\033[0m\n";
-	std::cout << "\033[1;34mExpected: Should throw GradeTooLowException\033[0m\n";
+	std::cout << "\033[1;34mTest: Create a form in a invalid min range for executeGrade (0)\033[0m\n";
+	std::cout << "\033[1;34mExpected: Form should be not be created and Grade too high exception should be thrown\033[0m\n";
 
 	try
 	{
-		Bureaucrat d("David", 160);
+		Form inValidForm("invalid form max", 1, 0);
+		std::cout << inValidForm;
 	}
-	catch (const Bureaucrat::GradeTooLowException& e)
+	catch (const Form::GradeTooHighException& e)
 	{
-		std::cout << "\033[33m[Exception] Creating Bureaucrat 'David' failed: "
-			<< e.what() << "\033[0m\n";
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
 	}
 }
 
 void runFifthTest()
 {
 	std::cout << "\n\033[34m========== Fifth Test ==========\033[0m\n";
-	std::cout << "\033[1;34mTest: Create Bureaucrat with grade 0\033[0m\n";
-	std::cout << "\033[1;34mExpected: Should throw GradeTooHighException\033[0m\n";
+	std::cout << "\033[1;34mTest: Create a form in a invalid max range for executeGrade (151)\033[0m\n";
+	std::cout << "\033[1;34mExpected: Form should be not be created and Grade too low exception should be thrown\033[0m\n";
 
 	try
 	{
-		Bureaucrat e("Eve", 0);
+		Form inValidForm("invalid form min", 1, 151);
+		std::cout << inValidForm;
 	}
-	catch (const Bureaucrat::GradeTooHighException& e)
+	catch (const Form::GradeTooHighException& e)
 	{
-		std::cout << "\033[33m[Exception] Creating Bureaucrat 'Eve' failed: "
-			<< e.what() << "\033[0m\n";
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
 	}
 }
 
+void runSixthTest()
+{
+	std::cout << "\n\033[34m========== Sixth Test ==========\033[0m\n";
+	std::cout << "\033[1;34mTest: Create a valid form and let it be sign (151)\033[0m\n";
+	std::cout << "\033[1;34mExpected: Form should be signed after \033[0m\n";
+	Form successfulSignForm("successful signed form", 150, 150);
+	Bureaucrat GodBureaucrat("GodBureaucrat", 1);
+	std::cout << "\n\033[36m[pre signForm()]\033[0m\n" << successfulSignForm;
+	try
+	{
+		GodBureaucrat.signForm(successfulSignForm);
+		std::cout << "\n\033[36m[after signForm()]\033[0m\n" << successfulSignForm;
+	}
+	catch (const Form::GradeTooHighException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
+}
+
+void runSeventhTest()
+{
+	std::cout << "\n\033[34m========== Seventh Test ==========\033[0m\n";
+	std::cout << "\033[1;34mTest: Create a valid form and let it be sign by a bureaucrat with lower grade than sign grade 149\033[0m\n";
+	std::cout << "\033[1;34mExpected: Form should be not signed after \033[0m\n";
+	Form unsuccessfulSignForm("unsuccessful signed form", 149, 149);
+	Bureaucrat KarenBureaucrat("Karen", 150);
+	std::cout << "\n\033[36m[pre signForm()]\033[0m\n" << unsuccessfulSignForm;
+	try
+	{
+		KarenBureaucrat.signForm(unsuccessfulSignForm);
+		std::cout << "\n\033[36m[after signForm()]\033[0m\n" << unsuccessfulSignForm;
+	}
+	catch (const Form::GradeTooHighException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
+}
+
+void runEighthTest()
+{
+	std::cout << "\n\033[34m========== Eighth Test ==========\033[0m\n";
+	std::cout << "\033[1;34mTest: Create a valid form and let it be sign by a bureaucrat with equal grade both 150 \033[0m\n";
+	std::cout << "\033[1;34mExpected: Form should be not signed after \033[0m\n";
+	Form equalSignForm("equal signed form", 150, 150);
+	Bureaucrat KarenBureaucrat("Karen", 150);
+	std::cout << "\n\033[36m[pre signForm()]\033[0m\n" << equalSignForm;
+	try
+	{
+		KarenBureaucrat.signForm(equalSignForm);
+		std::cout << "\n\033[36m[after signForm()]\033[0m\n" << equalSignForm;
+	}
+	catch (const Form::GradeTooHighException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+	}
+}
 
 int main(void)
 {
-	try
-	{
-		runFirstTest();
-	}
-	catch (Bureaucrat::GradeTooHighException& e)
-	{
-		std::cerr << "Unexpected error during First Test" << std::endl;
-	}
-	std::cout  << std::endl;
-	try
-	{
-		runSecondTest();
-	}
-	catch (Bureaucrat::GradeTooLowException& e)
-	{
-		std::cerr << "Unexpected error during Second Test" << std::endl;
-	}
-	std::cout  << std::endl;
-	try
-	{
-		runThirdTest();
-	}
-	catch (Bureaucrat::GradeTooLowException& e)
-	{
-		std::cerr << "Unexpected error during Third Test" << std::endl;
-	}
-	std::cout  << std::endl;
-	try
-	{
-		runFourthTest();
-	}
-	catch (Bureaucrat::GradeTooLowException& e)
-	{
-		std::cerr << "Unexpected error during Third Test" << std::endl;
-	}
-	std::cout  << std::endl;
-	try
-	{
-		runFifthTest();
-	}
-	catch (Bureaucrat::GradeTooHighException& e)
-	{
-		std::cerr << "Unexpected error during Fifth Test" << std::endl;
-	}
+	runFirstTest();
+	runSecondTest();
+	runThirdTest();
+	runFourthTest();
+	runFifthTest();
+	runSixthTest();
+	runSeventhTest();
+	runEighthTest();
 }
 
