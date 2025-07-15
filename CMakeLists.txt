@@ -17,6 +17,14 @@ add_executable(cpp05_ex01
         ex01/Form.cpp
         ex01/Form.hpp
 )
+
+add_executable(cpp05_ex02
+        ex02/main.cpp
+        ex02/Bureaucrat.cpp
+        ex02/Bureaucrat.hpp
+        ex02/Form.cpp
+        ex02/Form.hpp
+)
 #add_executable(cpp04_ex01
 #        ex01/Animal.cpp
 #        ex01/Brain.cpp
