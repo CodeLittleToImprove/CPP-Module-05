@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbui-quo <tbui-quo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/15 19:58:40 by tbui-quo          #+#    #+#             */
+/*   Updated: 2025/07/15 19:58:41 by tbui-quo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 # include <iostream>
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 class Bureaucrat
 {
 	private:
@@ -22,7 +34,7 @@ class Bureaucrat
 		void	setGrade(int grade);
 		void	incrementGrade();
 		void	decrementGrade();
-		void	signForm(Form& a);
+		void	signForm(AForm& a);
 		class GradeTooLowException : public std::exception
 		{
 		public:

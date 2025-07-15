@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbui-quo <tbui-quo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/15 19:58:36 by tbui-quo          #+#    #+#             */
+/*   Updated: 2025/07/15 19:58:38 by tbui-quo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
@@ -73,7 +84,7 @@ void Bureaucrat::decrementGrade()
 	this->setGrade(this->_grade + 1);
 }
 
-void	Bureaucrat::signForm(Form& a)
+void	Bureaucrat::signForm(AForm& a)
 {
 	try
 	{

@@ -22,8 +22,8 @@ add_executable(cpp05_ex02
         ex02/main.cpp
         ex02/Bureaucrat.cpp
         ex02/Bureaucrat.hpp
-        ex02/Form.cpp
-        ex02/Form.hpp
+        ex02/AForm.cpp
+        ex02/AForm.hpp
 )
 #add_executable(cpp04_ex01
 #        ex01/Animal.cpp
