@@ -10,30 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 // Default constructor
-PresidentialPardonForm::PresidentialPardonForm()
-	:AForm("PresidentialPardonForm", 25, 5), _target("Default target")
+RobotomyRequestForm::RobotomyRequestForm()
+	:AForm("RobotomyRequestForm", 72, 45), _target("Default target")
 {
 //	std::cout << "Default constructor called" << std::endl;
 }
 
 // Parameterized constructor
-PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
-	: AForm("Presidential Pardon Form", 25, 5), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
+	: AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
 }
 
 // Copy constructor
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
 	: AForm(other), _target(other._target)
 {
 //	std::cout << "Copy constructor called" << std::endl;
 }
 
 // Copy Assignment operator overload
-PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& other)
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
 //	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
@@ -45,21 +45,26 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 // Destructor
-PresidentialPardonForm::~PresidentialPardonForm(void)
+RobotomyRequestForm::~RobotomyRequestForm(void)
 {
 //	std::cout << "Destructor called" << std::endl;
 }
 
-const std::string& PresidentialPardonForm::getTarget() const
+const std::string& RobotomyRequestForm::getTarget() const
 {
 	return (this->_target);
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const& executor) const
+void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
 	if (executor.getGrade() > this->getExecuteGrade())
-		throw PresidentialPardonForm::GradeTooLowException();
+		throw RobotomyRequestForm::GradeTooLowException();
 	if (this->getIsSigned() == false)
-		throw PresidentialPardonForm::FormNotSignedException();
-	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+		throw RobotomyRequestForm::FormNotSignedException();
+	std::cout << "Doriru Doriru Doriru Doriru ..." << std::endl;
+	int n = std::rand();
+	if (n % 2 == 0)
+		std::cout << _target << " has been robotomized successfully." << std::endl;
+	else
+		std::cout << _target << " robotomy failed.." << std::endl;
 }

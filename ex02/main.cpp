@@ -13,6 +13,8 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
 
 // void printHeader(const std::string& title, const std::string& description, const std::string& expected)
 // {
@@ -222,6 +224,7 @@
 
 int main(void)
 {
+	std::srand(std::time(NULL));  // seed with current time
 	std::cout << "Constructors" << std::endl;
 	Bureaucrat TopBureaucrat("Top", 1);
 	Bureaucrat AverageBureaucrat("Average", 75);

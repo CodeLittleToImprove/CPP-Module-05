@@ -26,6 +26,8 @@ add_executable(cpp05_ex02
         ex02/AForm.hpp
         ex02/PresidentialPardonForm.hpp
         ex02/PresidentialPardonForm.cpp
+        ex02/RobotomyRequestForm.hpp
+        ex02/RobotomyRequestForm.cpp
 )
 #add_executable(cpp04_ex01
 #        ex01/Animal.cpp
