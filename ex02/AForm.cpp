@@ -57,12 +57,12 @@ const std::string& AForm::getName() const
 	return (_name);
 }
 
-const unsigned int AForm::getSignGrade() const
+unsigned int AForm::getSignGrade() const
 {
 	return (_signGrade);
 }
 
-const unsigned int AForm::getExecuteGrade() const
+unsigned int AForm::getExecuteGrade() const
 {
 	return (_executeGrade);
 }

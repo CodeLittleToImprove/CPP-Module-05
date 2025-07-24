@@ -44,7 +44,7 @@ Bureaucrat::~Bureaucrat(void)
 	// std::cout << "Destructor called" << std::endl;
 }
 
-const std::string& Bureaucrat::getName() const
+const std::string& Bureaucrat::getBureaucratName() const
 {
 	return (_name);
 }
@@ -86,7 +86,7 @@ const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 std::ostream& operator<<(std::ostream& os, Bureaucrat& a)
 {
 	os << "\033[36m"
-	<< "Bureaucrat" << " name: " << a.getName() << " grade: " << a.getGrade()
+	<< "Bureaucrat" << " name: " << a.getBureaucratName() << " grade: " << a.getGrade()
 	<< "\033[0m";  // Reset color
 	return os;
 }

@@ -24,6 +24,8 @@ add_executable(cpp05_ex02
         ex02/Bureaucrat.hpp
         ex02/AForm.cpp
         ex02/AForm.hpp
+        ex02/PresidentialPardonForm.hpp
+        ex02/PresidentialPardonForm.cpp
 )
 #add_executable(cpp04_ex01
 #        ex01/Animal.cpp

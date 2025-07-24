@@ -27,7 +27,7 @@ void runFirstTest()
 	}
 	catch (const Bureaucrat::GradeTooHighException& e)
 	{
-		std::cout << "\033[33m[Exception] Incrementing grade of " << a.getName()
+		std::cout << "\033[33m[Exception] Incrementing grade of " << a.getBureaucratName()
 			<< " failed: " << e.what() << "\033[0m\n";
 	}
 
@@ -49,7 +49,7 @@ void runSecondTest()
 	}
 	catch (const Bureaucrat::GradeTooLowException& e)
 	{
-		std::cout << "\033[33m[Exception] Decrementing grade of " << b.getName()
+		std::cout << "\033[33m[Exception] Decrementing grade of " << b.getBureaucratName()
 			<< " failed: " << e.what() << "\033[0m\n";
 	}
 
@@ -71,7 +71,7 @@ void runThirdTest()
 	}
 	catch (const Bureaucrat::GradeTooLowException& e)
 	{
-		std::cout << "\033[33m[Exception] Decrementing grade of " << c.getName()
+		std::cout << "\033[33m[Exception] Decrementing grade of " << c.getBureaucratName()
 			<< " failed: " << e.what() << "\033[0m\n";
 	}
 

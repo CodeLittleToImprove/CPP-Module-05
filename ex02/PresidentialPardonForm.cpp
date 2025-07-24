@@ -39,7 +39,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	if (this != &other)
 	{
 		AForm::operator=(other); // copy base class members
-		this->_isSigned = other._isSigned; // copy derived class members
+		this->_target= other._target; // copy derived class members
 	}
 	return (*this);
 }
@@ -55,18 +55,11 @@ const std::string& PresidentialPardonForm::getTarget() const
 	return (this->_target);
 }
 
-void PresidentialPardonForm::beSigned(Bureaucrat& signer)
-{
-	if (signer.getGrade() > this->_signGrade)
-		throw PresidentialPardonForm::GradeTooLowException();
-	this->_isSigned = true;
-}
-
-void PresidentialPardonForm::execute(Bureaucrat& const executor) const
+void PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
 	if (executor.getGrade() > this->getExecuteGrade())
 		throw PresidentialPardonForm::GradeTooLowException();
 	if (this->getIsSigned() == false)
 		throw PresidentialPardonForm::FormNotSignedException();
-	std::cout << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

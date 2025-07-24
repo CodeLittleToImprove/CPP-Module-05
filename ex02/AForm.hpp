@@ -32,10 +32,11 @@ class AForm
 		AForm& operator=(const AForm& other);
 		virtual ~AForm();
 		const std::string&	getName() const;
-		const unsigned int	getSignGrade() const;
-		const unsigned int	getExecuteGrade() const;
+		unsigned int	getSignGrade() const;
+		unsigned int	getExecuteGrade() const;
 		bool				getIsSigned() const;
 		void				beSigned(Bureaucrat& signer);
+		virtual void		execute(Bureaucrat const  &executor) const = 0;
 		//exceptions
 		class GradeTooLowException : public std::exception
 		{

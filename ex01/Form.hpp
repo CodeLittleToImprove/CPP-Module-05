@@ -20,8 +20,8 @@ class Form
 		Form& operator=(const Form& other);
 		~Form();
 		const std::string&	getName() const;
-		const unsigned int	getSignGrade() const;
-		const unsigned int	getExecuteGrade() const;
+		unsigned int	getSignGrade() const;
+		unsigned int	getExecuteGrade() const;
 		bool				getIsSigned() const;
 		void				beSigned(Bureaucrat& signer);
 		//exceptions

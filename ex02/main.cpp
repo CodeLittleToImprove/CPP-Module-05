@@ -223,12 +223,12 @@
 int main(void)
 {
 	std::cout << "Constructors" << std::endl;
-	Bureaucrat TopBureaucrat("Kelly", 1);
-	Bureaucrat AverageBureaucrat("Tom", 75);
-	Bureaucrat BadBureaucrat("Peter", 150);
+	Bureaucrat TopBureaucrat("Top", 1);
+	Bureaucrat AverageBureaucrat("Average", 75);
+	Bureaucrat BadBureaucrat("Bad", 150);
 
-	PresidentialPardonForm presidential("Alice");
-	PresidentialPardonForm presidential2("Charlie");
+	PresidentialPardonForm presidential("Name 1");
+	PresidentialPardonForm presidential2("Name 2");
 
 	std::cout << "Presidential Pardon Test 1" << std::endl;
 	try
@@ -244,7 +244,7 @@ int main(void)
 
 	std::cout << "Presidential Pardon Test 2" << std::endl;
 	TopBureaucrat.signForm(presidential2);				// Success with TopBureaucrat
-	TopBureaucrat.execute(presidential2);			// Success with TopBureaucrat
+	TopBureaucrat.executeForm(presidential2);			// Success with TopBureaucrat
 	std::cout << std::endl;
 	// runFirstTest();
 	// runSecondTest();

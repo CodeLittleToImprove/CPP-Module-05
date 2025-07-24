@@ -29,12 +29,13 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat& operator=(const Bureaucrat& other);
 		~Bureaucrat();
-		const std::string& getName() const;
+		const std::string& getBureaucratName() const;
 		unsigned int	getGrade() const;
 		void	setGrade(int grade);
 		void	incrementGrade();
 		void	decrementGrade();
-		void	signForm(AForm& a);
+		void	signForm(AForm& form);
+		void	executeForm(AForm const& form) const;
 		class GradeTooLowException : public std::exception
 		{
 		public:
