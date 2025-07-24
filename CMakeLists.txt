@@ -28,7 +28,10 @@ add_executable(cpp05_ex02
         ex02/PresidentialPardonForm.cpp
         ex02/RobotomyRequestForm.hpp
         ex02/RobotomyRequestForm.cpp
+        ex02/ShrubberyCreationForm.hpp
+        ex02/ShrubberyCreationForm.cpp
 )
+
 #add_executable(cpp04_ex01
 #        ex01/Animal.cpp
 #        ex01/Brain.cpp
