@@ -226,9 +226,9 @@ int main(void)
 {
 	std::srand(std::time(NULL));  // seed with current time
 	std::cout << "Constructors" << std::endl;
-	Bureaucrat TopBureaucrat("Top", 1);
-	Bureaucrat AverageBureaucrat("Average", 75);
-	Bureaucrat BadBureaucrat("Bad", 150);
+	Bureaucrat TopBureaucrat("TopBureaucrat", 1);
+	Bureaucrat AverageBureaucrat("AverageBureaucrat", 75);
+	Bureaucrat BadBureaucrat("BadBureaucrat", 150);
 
 	PresidentialPardonForm presidential("Name 1");
 	PresidentialPardonForm presidential2("Name 2");
