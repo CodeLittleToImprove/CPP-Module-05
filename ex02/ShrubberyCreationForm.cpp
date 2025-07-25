@@ -61,7 +61,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 		throw ShrubberyCreationForm::GradeTooLowException();
 	if (this->getIsSigned() == false)
 		throw ShrubberyCreationForm::FormNotSignedException();
-	std::string		target = this->_target + "_shrubbery";
+	std::string target = this->_target + "_shrubbery";
 	std::ofstream	output(target.c_str());
 
 	if (!output.is_open())
@@ -75,7 +75,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 	output << "_- -   | | _- _" << std::endl;
 	output << "  _ -  | |   -_" << std::endl;
 	output << "      // \\\\ " << std::endl;
-
+	// output.flush();
+	// output.close();
+	std::cout << "done Shrubbery Execute" << std::endl;
 }
 
 const char *ShrubberyCreationForm::FailInFileException::what() const throw()

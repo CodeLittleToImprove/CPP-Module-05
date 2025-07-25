@@ -14,6 +14,7 @@
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 
 // void printHeader(const std::string& title, const std::string& description, const std::string& expected)
@@ -23,27 +24,7 @@
 // 	std::cout << "\033[1;34mExpected: " << expected << "\033[0m\n";
 // }
 //
-// void printException(const std::exception& e)
-// {
-// 	std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
-// }
-//
-// /* Test 1: Valid form creation */
-// void runFirstTest()
-// {
-// 	std::cout << "\n\033[34m========== First Test ==========\033[0m\n";
-// 	std::cout << "\033[1;34mTest: Create a form in a valid range and print it \033[0m\n";
-// 	std::cout << "\033[1;34mExpected: Form should be created\033[0m\n";
-//
-// 	try
-// 	{
-// 		AAForm validForm("valid form", 1, 150);
-// 		std::cout << validForm;
-// 	}
-// 	catch (const std::exception& e)
-// 	{
-// 		printException(e);
-// 	}
+
 // }
 //
 // /* Test 2: Invalid min range for signGrade */
@@ -222,33 +203,214 @@
 // 	}
 // }
 
-int main(void)
+void printHeader(const std::string& title, const std::string& description, const std::string& expected)
 {
-	std::srand(std::time(NULL));  // seed with current time
-	std::cout << "Constructors" << std::endl;
+	std::cout << "\n\033[34m========== " << title << " ==========\033[0m\n";
+	std::cout << "\033[1;34mTest: " << description << "\033[0m\n";
+	std::cout << "\033[1;34mExpected: " << expected << "\033[0m\n";
+}
+
+void printException(const std::exception& e)
+{
+	std::cout << "\033[33m[Exception] " << e.what() << "\033[0m\n";
+}
+
+void runPresidentialPardonFormTest1()
+{
+	printHeader
+	(
+		"First Test",
+		"Create a Presidental-pardonform and sign it by a valid bureaucrat ",
+		"Form should be created and executed"
+	);
+
 	Bureaucrat TopBureaucrat("TopBureaucrat", 1);
-	Bureaucrat AverageBureaucrat("AverageBureaucrat", 75);
-	Bureaucrat BadBureaucrat("BadBureaucrat", 150);
+
 
 	PresidentialPardonForm presidential("Name 1");
 	PresidentialPardonForm presidential2("Name 2");
-
-	std::cout << "Presidential Pardon Test 1" << std::endl;
 	try
 	{
 		presidential.beSigned(TopBureaucrat);				// Success with TopBureaucrat
 		presidential.execute(TopBureaucrat);				// Success with TopBureaucrat
 	}
-	catch(const std::exception& e)
+	catch (const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		printException(e);
 	}
-	std::cout << std::endl;
+}
 
-	std::cout << "Presidential Pardon Test 2" << std::endl;
-	TopBureaucrat.signForm(presidential2);				// Success with TopBureaucrat
-	TopBureaucrat.executeForm(presidential2);			// Success with TopBureaucrat
-	std::cout << std::endl;
+void runPresidentialPardonFormTest2()
+{
+	printHeader
+	(
+	"Second Test",
+	"Test: Try to execute an unsigned PresidentialPardonForm",
+	"Exception should be thrown for unsigned form"
+	);
+	Bureaucrat TopBureaucrat("TopBureaucrat", 1);
+	PresidentialPardonForm presidential("Target");
+
+	try
+	{
+		presidential.execute(TopBureaucrat); // should throw because not signed
+	}
+	catch (const std::exception& e)
+	{
+		printException(e);
+	}
+}
+
+void runPresidentialPardonFormTest3()
+{
+	printHeader
+	(
+	"Third Test",
+	"Bureaucrat with low grade tries to sign the form",
+	"GradeTooLowException should be thrown"
+	);
+
+	Bureaucrat lowBureaucrat("Intern", 150);
+	PresidentialPardonForm presidential("Target");
+
+	try
+	{
+		presidential.beSigned(lowBureaucrat);
+	}
+	catch (const std::exception& e)
+	{
+		printException(e);
+	}
+}
+
+void runPresidentialPardonFormTest4()
+{
+	printHeader(
+		"Fourth Test",
+		"Bureaucrat with low grade tries to execute signed form",
+		"GradeTooLowException should be thrown"
+	);
+
+	Bureaucrat topBureaucrat("Boss", 1);
+	Bureaucrat lowBureaucrat("Intern", 150);
+	PresidentialPardonForm presidential("Target");
+
+	try
+	{
+		presidential.beSigned(topBureaucrat);
+		presidential.execute(lowBureaucrat); // should fail
+	}
+	catch (const std::exception& e)
+	{
+		printException(e);
+	}
+}
+
+void runPresidentialPardonFormTest5()
+{
+	printHeader(
+		"Fifth Test",
+		"Copy a signed form and execute the copy",
+		"Both original and copy can be executed"
+	);
+
+	Bureaucrat boss("Boss", 1);
+	PresidentialPardonForm original("Target");
+
+	try
+	{
+		original.beSigned(boss);
+		PresidentialPardonForm copy(original);
+
+		original.execute(boss);
+		copy.execute(boss);
+	}
+	catch (const std::exception& e)
+	{
+		printException(e);
+	}
+}
+
+void runRobotomyTest()
+{
+	std::srand(std::time(NULL));  // seed with current time
+	printHeader(
+		"Robotomy Test (Randomized)",
+		"Run RobotomyRequestForm execute 10 times to observe random outcomes",
+		"Roughly 50% should succeed, 50% should fail (output may vary)"
+	);
+
+	Bureaucrat executor("TopExecutor", 1);
+	RobotomyRequestForm form("RandomTarget");
+
+	try
+	{
+		form.beSigned(executor);
+
+		for (int i = 0; i < 10; ++i)
+		{
+			std::cout << "Attempt #" << i + 1 << ": ";
+			form.execute(executor);
+		}
+	}
+	catch (const std::exception& e)
+	{
+		printException(e);
+	}
+}
+
+void runShrubberyTest1()
+{
+	printHeader(
+		"Shrubbery Test 1",
+		"Execute signed ShrubberyCreationForm with high-grade Bureaucrat",
+		"Should create a file with a tree inside"
+	);
+
+	Bureaucrat top("TopBureaucrat", 1);
+	ShrubberyCreationForm form("Garden");
+
+	try
+	{
+		form.beSigned(top);
+		form.execute(top);
+		std::cout << "\033[32mSuccess: File 'Garden_shrubbery' should now exist.\033[0m" << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		printException(e);
+	}
+}
+
+int main(void)
+{
+	// runPresidentialPardonFormTest1();
+	// runPresidentialPardonFormTest2();
+	// runPresidentialPardonFormTest3();
+	// runPresidentialPardonFormTest4();
+	// runPresidentialPardonFormTest5();
+	// runRobotomyTest();
+	runShrubberyTest1();
+	// std::cout << "Constructors" << std::endl;
+
+
+
+
+	// std::cout << "Presidential Pardon Test 1" << std::endl;
+	// try
+	// {
+	//
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << e.what() << std::endl;
+	// }
+	// std::cout << std::endl;
+
+	// std::cout << "Presidential Pardon Test 2" << std::endl;
+	// TopBureaucrat.signForm(presidential2);				// Success with TopBureaucrat
+	// TopBureaucrat.executeForm(presidential2);			// Success with TopBureaucrat
+	// std::cout << std::endl;
 	// runFirstTest();
 	// runSecondTest();
 	// runThirdTest();
