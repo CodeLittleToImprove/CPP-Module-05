@@ -25,5 +25,5 @@ public:
 	PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
 	~PresidentialPardonForm();
 	const std::string& getTarget() const;
-	virtual void execute(Bureaucrat const& executor) const; // virtual is optional, here it's used to show it get overridden but we can't use that keyword in cpp98
+	void executeAction() const;
 };

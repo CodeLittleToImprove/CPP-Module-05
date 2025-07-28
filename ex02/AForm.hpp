@@ -36,7 +36,8 @@ class AForm
 		unsigned int	getExecuteGrade() const;
 		bool				getIsSigned() const;
 		void				beSigned(Bureaucrat& signer);
-		virtual void		execute(Bureaucrat const  &executor) const = 0;
+		void		execute(Bureaucrat const  &executor) const;
+		virtual	void executeAction() const = 0;
 		//exceptions
 		class GradeTooLowException : public std::exception
 		{

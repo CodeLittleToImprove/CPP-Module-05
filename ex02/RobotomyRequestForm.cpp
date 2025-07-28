@@ -55,12 +55,8 @@ const std::string& RobotomyRequestForm::getTarget() const
 	return (this->_target);
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const& executor) const
+void RobotomyRequestForm::executeAction() const
 {
-	if (executor.getGrade() > this->getExecuteGrade())
-		throw RobotomyRequestForm::GradeTooLowException();
-	if (this->getIsSigned() == false)
-		throw RobotomyRequestForm::FormNotSignedException();
 	std::cout << "Doriru Doriru Doriru Doriru ..." << std::endl;
 	int n = std::rand();
 	if (n % 2 == 0)

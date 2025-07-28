@@ -55,13 +55,9 @@ const std::string& ShrubberyCreationForm::getTarget() const
 	return (this->_target);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
+void ShrubberyCreationForm::executeAction() const
 {
-	if (executor.getGrade() > this->getExecuteGrade())
-		throw ShrubberyCreationForm::GradeTooLowException();
-	if (this->getIsSigned() == false)
-		throw ShrubberyCreationForm::FormNotSignedException();
-	std::string target = this->_target + "_shrubbery";
+	std::string target = this->getTarget() + "_shrubbery";
 	std::ofstream	output(target.c_str());
 
 	if (!output.is_open())
@@ -79,5 +75,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 
 const char *ShrubberyCreationForm::FailInFileException::what() const throw()
 {
-	return "\033The file failed to open or to be created!\033[0m";
+	return ("\033[1;31mThe file failed to open or to be created!\033[0m");
 }

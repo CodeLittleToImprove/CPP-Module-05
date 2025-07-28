@@ -79,6 +79,15 @@ void AForm::beSigned(Bureaucrat& signer)
 	this->_isSigned = true;
 }
 
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (executor.getGrade() > this->_executeGrade)
+		throw AForm::GradeTooLowException();
+	if (this->getIsSigned() == false)
+		throw AForm::FormNotSignedException();
+	this->executeAction();
+}
+
 std::ostream& operator<<(std::ostream& os, const AForm& a)
 {
 	os << "\033[36m"
