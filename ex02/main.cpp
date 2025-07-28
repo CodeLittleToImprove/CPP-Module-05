@@ -391,34 +391,6 @@ int main(void)
 	// runPresidentialPardonFormTest5();
 	// runRobotomyTest();
 	runShrubberyTest1();
-	// std::cout << "Constructors" << std::endl;
 
-
-
-
-	// std::cout << "Presidential Pardon Test 1" << std::endl;
-	// try
-	// {
-	//
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-	// std::cout << std::endl;
-
-	// std::cout << "Presidential Pardon Test 2" << std::endl;
-	// TopBureaucrat.signForm(presidential2);				// Success with TopBureaucrat
-	// TopBureaucrat.executeForm(presidential2);			// Success with TopBureaucrat
-	// std::cout << std::endl;
-	// runFirstTest();
-	// runSecondTest();
-	// runThirdTest();
-	// runFourthTest();
-	// runFifthTest();
-	// runSixthTest();
-	// runSeventhTest();
-	// runEighthTest();
-	// runNinthTest();
 }
 

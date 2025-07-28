@@ -75,9 +75,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 	output << "_- -   | | _- _" << std::endl;
 	output << "  _ -  | |   -_" << std::endl;
 	output << "      // \\\\ " << std::endl;
-	// output.flush();
-	// output.close();
-	std::cout << "done Shrubbery Execute" << std::endl;
 }
 
 const char *ShrubberyCreationForm::FailInFileException::what() const throw()
