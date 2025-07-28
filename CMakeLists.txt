@@ -32,6 +32,22 @@ add_executable(cpp05_ex02
         ex02/ShrubberyCreationForm.cpp
 )
 
+add_executable(cpp05_ex03
+        ex03/main.cpp
+        ex03/Bureaucrat.cpp
+        ex03/Bureaucrat.hpp
+        ex03/AForm.cpp
+        ex03/AForm.hpp
+        ex03/PresidentialPardonForm.hpp
+        ex03/PresidentialPardonForm.cpp
+        ex03/RobotomyRequestForm.hpp
+        ex03/RobotomyRequestForm.cpp
+        ex03/ShrubberyCreationForm.hpp
+        ex03/ShrubberyCreationForm.cpp
+        ex03/Intern.hpp
+        ex03/Intern.cpp
+)
+
 #add_executable(cpp04_ex01
 #        ex01/Animal.cpp
 #        ex01/Brain.cpp
