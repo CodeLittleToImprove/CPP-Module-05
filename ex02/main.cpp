@@ -58,7 +58,7 @@ void runPresidentialPardonFormTest2()
 	printHeader
 	(
 	"Second Test",
-	"Test: Try to execute an unsigned PresidentialPardonForm",
+	"Try to execute an unsigned PresidentialPardonForm",
 	"Exception should be thrown for unsigned form"
 	);
 	Bureaucrat TopBureaucrat("TopBureaucrat", 1);
